@@ -1,10 +1,11 @@
 {
-  "name": "electron-quick-start",
+  "name": "electricity-moon-generator",
+  "productName": "Electricity Moon Generator",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron . --asar=false --inspect"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -14,9 +15,13 @@
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "KODHAGe",
+  "dependencies": {
+    "timecut": "github:kodhage/timecut#master"
+  },
   "devDependencies": {
-    "electron": "^9.0.5"
+    "electron": "^9.0.5",
+    "electron-packager": "^15.0.0",
+    "electron-rebuild": "^1.11.0"
   }
 }

@@ -1,14 +1,39 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const { ipcMain } = require('electron')
+const electron = require('electron');
+const configDir =  (electron.app || electron.remote.app).getPath('userData');
+const timecut = require('timecut')
+let mainWindow; // Lazy stuff
+
+function cut(url, path = configDir + '/animaatio.mp4') {
+  timecut({
+    url: url,
+    viewport: {
+      width: 1000,
+      height: 600
+    },    
+    selector: '#header',
+    //left: 20, top: 40,
+    //right: 6, bottom: 30,
+    fps: 30,
+    duration: 1,
+    output: path
+  }).then(function () {
+    mainWindow.webContents.send('hide')
+  });
+}
 
 function createWindow () {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
-    width: 800,
+  mainWindow = new BrowserWindow({
+    width: 850,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
+      preload: path.join(__dirname, 'preload.js'),
+      nodeIntegration: true,
+      webSecurity: false
     }
   })
 
@@ -41,3 +66,7 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+ipcMain.on('record', (event, url, path) => {
+  cut(url, path)
+})

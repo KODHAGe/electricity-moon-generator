@@ -3,17 +3,28 @@
   <head>
     <meta charset="UTF-8">
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; frame-src https://electricity-moon.surge.sh/generator.html http://localhost:3000">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'; frame-src https://electricity-moon.surge.sh/generator.html http://localhost">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Runokuu 2020</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
+    <h1>FB-animaatiogeneraattori</h1>
+    <iframe id="animation" src="https://electricity-moon.surge.sh/generator.html" width="820px" height="312px"></iframe>
+    <div class="input">
+      <input id="text" type="text" placeholder="Otsikko" />
+      <input id="date" type="text" placeholder="Aika" />
+    </div>
+    <div class="controls">
+      <button id="new">Uusi animaatio</button>
+      <button id="reload">Päivitä tekstit</button>
+      <button id="run">Tallenna video</button>
+    </div>
+    <div id="overlay" class="hidden">
+      <div class="loader"><p>Luodaan videota, odotahan 🙏</p><div class="lds-heart"><div></div></div></div>
+    </div>
     <!-- You can also require other files to run in this process -->
+    <!--<script src="./timecut.js"></script>-->
     <script src="./renderer.js"></script>
   </body>
 </html>
