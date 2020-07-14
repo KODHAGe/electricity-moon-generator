@@ -2,3 +2,4 @@ node_modules
 video.mp4
 Electricity Moon Generator-darwin-x64
 .DS_Store
+dist

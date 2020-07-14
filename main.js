@@ -18,7 +18,7 @@ function cut(url, path = configDir + '/animaatio.mp4') {
     //left: 20, top: 40,
     //right: 6, bottom: 30,
     fps: 30,
-    duration: 1,
+    duration: 20,
     output: path
   }).then(function () {
     mainWindow.webContents.send('hide')

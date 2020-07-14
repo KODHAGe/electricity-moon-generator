@@ -5,7 +5,15 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron . --asar=false --inspect"
+    "start": "electron . --asar=false --inspect",
+    "build-win": "electron-packager . --platform=win32 --out=dist",
+    "build-macos": "electron-packager . --platform=darwin --out=dist",
+    "build": "npm run build-win && npm run build-macos",
+    "zip-win": "ditto -ck --norsrc 'dist/Electricity Moon Generator-win32-x64' dist/electricity-moon-windows.zip",
+    "tar-mac": "tar -czvf dist/electricity-moon-mac.tar 'dist/Electricity Moon Generator-darwin-x64'",
+    "zip": "npm run zip-win && npm run tar-mac",
+    "clear": "rm -rf 'dist/Electricity Moon Generator-win32-x64' && rm -rf 'dist/Electricity Moon Generator-darwin-x64'",
+    "release": "npm run build && npm run zip && npm run clear"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
