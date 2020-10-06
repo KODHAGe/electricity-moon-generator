@@ -28,7 +28,7 @@
     "timecut": "github:kodhage/timecut#master"
   },
   "devDependencies": {
-    "electron": "^9.0.5",
+    "electron": "^9.3.0",
     "electron-packager": "^15.0.0",
     "electron-rebuild": "^1.11.0"
   }
